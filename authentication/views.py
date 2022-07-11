@@ -11,11 +11,13 @@ import jwt
 from django.conf import settings
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
+from .renderers import UseRenderer
 
 # Create your views here.
 
 class RegisterView(generics.GenericAPIView):
     serializer_class = RegisterSerializer
+    renderer_classes = (UseRenderer,)
 
     token_param_config =openapi.Parameter('token', in_=openapi.IN_QUERY,description='Description',type=openapi.TYPE_STRING)
 
